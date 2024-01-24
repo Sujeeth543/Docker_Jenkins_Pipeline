@@ -1,0 +1,33 @@
+pipeline
+{
+    agent none
+    stages
+    {
+        stage('frontend')
+        {
+            agent  { docker { image 'python'} }
+            steps
+            {
+                sh 'python --version'
+            }
+        }
+        stage('backend')
+        {
+            agent { docker { image 'mysql'} }
+            steps
+            {
+                sh 'mysql --version'
+            }
+         }
+         stage('deploy')
+         {
+             agent { docker { image 'mongo' } }
+             steps
+             {
+                 sh 'mongod --version'
+             }
+         }
+         
+         
+    }
+}
