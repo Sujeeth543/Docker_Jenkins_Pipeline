@@ -1,0 +1,18 @@
+pipeline
+{
+    agent 
+    {
+        docker {image 'tomee'}
+    }
+    stages
+    {
+        stage('Image_Build')
+        {
+                steps
+                {
+                    sh 'tomee --version'
+                }
+        }
+    }
+    
+}
